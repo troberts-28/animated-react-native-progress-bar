@@ -1,0 +1,149 @@
+{
+    "name": "simple-react-native-progress-bar",
+    "description": "The simplest, most performant, animated progress bar for React Native apps 🚀\n\nSilky smooth animations and complete styling flexibility 💄",
+    "author": {
+        "name": "Tim Roberts",
+        "url": "https://github.com/troberts-28"
+    },
+    "license": "MIT",
+    "version": "0.0.0",
+    "main": "dist/commonjs/index.js",
+    "types": "dist/typescript/src/index.d.ts",
+    "scripts": {
+        "test": "jest --forceExit --silent",
+        "build": "bob build",
+        "clean": "rm yarn.lock && rm -rf ./node_modules && yarn install",
+        "start": "cp -Rf src example && cd example && npx expo install && npx expo start",
+        "lint": "eslint --ext .ts,.tsx .",
+        "lint:fix": "eslint --ext .ts,.tsx . --fix",
+        "prepare": "yarn build"
+    },
+    "homepage": "https://github.com/troberts-28/simple-react-native-progress-bar",
+    "bugs": {
+        "url": "https://github.com/troberts-28/simple-react-native-progress-bar/issues"
+    },
+    "repository": {
+        "name": "GitHub",
+        "type": "git",
+        "url": "git+https://github.com/troberts-28/simple-react-native-progress-bar.git"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
+    "files": [
+        "src",
+        "dist",
+        "!**/__tests__",
+        "!**/__fixtures__",
+        "!**/__mocks__",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ],
+    "keywords": [
+        "react",
+        "react-native",
+        "expo",
+        "progress",
+        "progress-bar",
+        "loading",
+        "loading-bar",
+        "progressbar",
+        "animated-progress",
+        "animated-progress-bar",
+        "expo-progress",
+        "expo-progress-bar",
+        "expo-progressbar",
+        "expo-loading",
+        "expo-loading-bar",
+        "expo-loadingbar",
+        "expo-animated-progress",
+        "expo-animated-progress-bar",
+        "react-native-progress",
+        "react-native-progress-bar",
+        "react-native-progressbar",
+        "react-native-loading",
+        "react-native-loading-bar",
+        "react-native-loadingbar",
+        "react-native-animated-progress",
+        "react-native-animated-progress-bar",
+        "efficient-progress-bar",
+        "efficient-animated-progress-bar",
+        "lightweight-progress-bar",
+        "lightweight-animated-progress-bar",
+        "react-native-ui-component",
+        "react-native-loading",
+        "customizable-progress-bar",
+        "react-native-custom-progress",
+        "react-native-performant-progress",
+        "react-native-easy-progress",
+        "stylish-progress-bar",
+        "expo-smooth-progress-bar",
+        "react-native-smooth-progress-bar"
+    ],
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "jest": {
+        "preset": "react-native",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ],
+        "testEnvironment": "node",
+        "modulePathIgnorePatterns": [
+            "<rootDir>/dist/",
+            "<rootDir>/example/"
+        ],
+        "transformIgnorePatterns": []
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-native": ">=0.59.0"
+    },
+    "devDependencies": {
+        "@babel/core": ">=7.20.0",
+        "@babel/plugin-transform-class-properties": "^7.22.5",
+        "@babel/plugin-transform-flow-strip-types": "^7.22.5",
+        "@babel/plugin-transform-private-methods": "^7.22.5",
+        "@testing-library/react-native": "^12.0.0",
+        "@types/jest": "^29.0.0",
+        "@types/react": ">=18.0.27",
+        "@types/react-native": ">=0.70.6",
+        "@typescript-eslint/eslint-plugin": ">=5.49.0",
+        "@typescript-eslint/parser": ">=5.49.0",
+        "babel-jest": "^29.6.2",
+        "eslint": ">=8.44.0",
+        "eslint-plugin-import": ">=2.29.0",
+        "eslint-plugin-react": ">=7.33.1",
+        "eslint-plugin-react-hooks": ">=4.6.0",
+        "eslint-plugin-sort-destructure-keys": "^1.5.0",
+        "eslint-plugin-typescript-sort-keys": ">=3.1.0",
+        "jest": "^29.0.0",
+        "metro-react-native-babel-preset": "^0.71.1",
+        "react-native-builder-bob": "^0.18.3",
+        "react-test-renderer": "^18.0.0",
+        "typescript": ">=4.7.4"
+    },
+    "react-native": "src/index.ts",
+    "source": "src/index.ts",
+    "module": "dist/module/index.js",
+    "typings": "./dist/typescript/index.d.ts",
+    "react-native-builder-bob": {
+        "source": "src",
+        "output": "dist",
+        "targets": [
+            "commonjs",
+            "module",
+            "typescript"
+        ]
+    },
+    "eslintIgnore": [
+        "node_modules/",
+        "dist/"
+    ]
+}
