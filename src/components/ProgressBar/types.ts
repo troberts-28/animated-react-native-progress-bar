@@ -1,6 +1,8 @@
-import type { ComponentProps, ReactElement } from "react";
+import type { ReactElement } from "react";
 
-import type { LayoutAnimationConfig, View } from "react-native";
+import type { LayoutAnimationConfig } from "react-native";
+
+import type { CustomProgressBarStyles } from "./styles";
 
 export type TrackColorType = {
     color: string;
@@ -10,11 +12,10 @@ export type TrackColorType = {
 export interface ProgressProps {
     animate?: boolean;
     children?: ReactElement | ReactElement[] | null;
-    filledTrackStyle?: ComponentProps<typeof View>["style"];
     layoutAnimationConfig?: LayoutAnimationConfig;
     max?: number;
     min?: number;
+    styles?: CustomProgressBarStyles;
     trackColor?: string | TrackColorType[];
-    trackStyle?: ComponentProps<typeof View>["style"];
     value?: number;
 }

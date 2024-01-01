@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-import { LayoutAnimation, View } from "react-native";
+import { LayoutAnimation, Platform, UIManager, View } from "react-native";
 
-import styles from "./styles";
+import { generateStyles } from "./styles";
 import type { ProgressProps } from "./types";
 import { getTrackColor } from "../../utils/getTrackColor";
 import { getValueWidth } from "../../utils/getValueWidth";
@@ -11,18 +11,27 @@ const Progress = (props: ProgressProps) => {
     const {
         animate = true,
         children,
-        filledTrackStyle,
         layoutAnimationConfig,
         max = 100,
         min = 0,
-        trackColor,
-        trackStyle,
-        value = 0,
+        styles: customStyles,
+        trackColor = "#10B981",
+        value = 50,
     } = props;
+
+    const styles = generateStyles(customStyles);
 
     const [valueWidth, setValueWidth] = useState(
         getValueWidth(value, min, max)
     );
+
+    useEffect(() => {
+        if (Platform.OS === "android") {
+            if (UIManager.setLayoutAnimationEnabledExperimental) {
+                UIManager.setLayoutAnimationEnabledExperimental(true);
+            }
+        }
+    }, []);
 
     useEffect(() => {
         // set using an effect rather than directly to ensure the layout animation
@@ -49,14 +58,12 @@ const Progress = (props: ProgressProps) => {
     }, [trackColor, value]);
 
     return (
-        <View style={[styles.track, trackStyle]}>
+        <View style={styles.track}>
             <View
                 style={[
                     styles.filledTrack,
-                    filledTrackStyle,
                     {
                         width: `${valueWidth}%`,
-                        opacity: valueWidth > 0.1 ? 1 : 0,
                         backgroundColor: calculatedTrackColor,
                     },
                 ]}

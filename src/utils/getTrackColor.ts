@@ -1,13 +1,9 @@
-import type { TrackColorType } from "../components/Progress/types";
+import type { TrackColorType } from "../components/ProgressBar/types";
 
 export const getTrackColor = (
     value: number,
-    trackColor: string | TrackColorType[] | undefined
+    trackColor: string | TrackColorType[]
 ) => {
-    if (!trackColor) {
-        return "#5B0854";
-    }
-
     if (typeof trackColor === "string") {
         // If trackColor is a string, return it directly
         return trackColor;
