@@ -1,6 +1,6 @@
 {
-    "name": "simple-react-native-progress-bar",
-    "description": "The simplest, most performant, animated progress bar for React Native apps 🚀\n\nSilky smooth animations and complete styling flexibility 💄",
+    "name": "animated-react-native-progress-bar",
+    "description": "The smallest, most performant, animated progress bar for React Native apps 🚀\n\nSilky smooth animations and complete styling flexibility 💄",
     "author": {
         "name": "Tim Roberts",
         "url": "https://github.com/troberts-28"

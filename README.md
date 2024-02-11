@@ -1,15 +1,17 @@
-# The Simplest Animated React Native Progress Bar ⌛⏳✅
+# Animated React Native Progress Bar ⌛⏳✅
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)]()
 ![platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-brightgreen.svg?style=for-the-badge&colorB=191A17)
 [![Version](https://img.shields.io/npm/v/simple-react-native-progress-bar.svg?style=for-the-badge)](https://www.npmjs.com/package/simple-react-native-progress-bar)
 [![npm](https://img.shields.io/npm/dt/simple-react-native-progress-bar.svg?style=for-the-badge)](https://www.npmjs.com/package/simple-react-native-progress-bar)
 
-The simplest, most performant, animated progress bar for React Native apps 🚀
+The smallest, most performant, animated progress bar for React Native apps 🚀
 
 Silky smooth animations and complete styling flexibility 💄
 
 Works with Expo and bare React Native apps.
+
+Zero dependencies.
 
 -   [Demos 📱](#demos-📱)
 -   [Peer Dependencies 👶](#peer-dependencies-)
