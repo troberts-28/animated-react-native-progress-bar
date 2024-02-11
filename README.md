@@ -2,8 +2,8 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)]()
 ![platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-brightgreen.svg?style=for-the-badge&colorB=191A17)
-[![Version](https://img.shields.io/npm/v/simple-react-native-progress-bar.svg?style=for-the-badge)](https://www.npmjs.com/package/simple-react-native-progress-bar)
-[![npm](https://img.shields.io/npm/dt/simple-react-native-progress-bar.svg?style=for-the-badge)](https://www.npmjs.com/package/simple-react-native-progress-bar)
+[![Version](https://img.shields.io/npm/v/animated-react-native-progress-bar.svg?style=for-the-badge)](https://www.npmjs.com/package/animated-react-native-progress-bar)
+[![npm](https://img.shields.io/npm/dt/animated-react-native-progress-bar.svg?style=for-the-badge)](https://www.npmjs.com/package/animated-react-native-progress-bar)
 
 The smallest, most performant, animated progress bar for React Native apps 🚀
 
@@ -24,7 +24,7 @@ Zero dependencies.
 
 ## Demos 📱
 
-**Try it out for yourself on [Expo Snack](https://snack.expo.dev/@nuumi/simple-react-native-progress-bar-demo)!** Make sure to run it on a mobile to see it working properly.
+**Try it out for yourself on [Expo Snack](https://snack.expo.dev/@nuumi/animated-react-native-progress-bar-demo)!** Make sure to run it on a mobile to see it working properly.
 
 <p>
     <img src="demos/example1.gif" width="250" height="550" style="margin-right:50px"/>

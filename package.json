@@ -19,14 +19,14 @@
         "lint:fix": "eslint --ext .ts,.tsx . --fix",
         "prepare": "yarn build"
     },
-    "homepage": "https://github.com/troberts-28/simple-react-native-progress-bar",
+    "homepage": "https://github.com/troberts-28/animated-react-native-progress-bar",
     "bugs": {
-        "url": "https://github.com/troberts-28/simple-react-native-progress-bar/issues"
+        "url": "https://github.com/troberts-28/animated-react-native-progress-bar/issues"
     },
     "repository": {
         "name": "GitHub",
         "type": "git",
-        "url": "git+https://github.com/troberts-28/simple-react-native-progress-bar.git"
+        "url": "git+https://github.com/troberts-28/animated-react-native-progress-bar.git"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"

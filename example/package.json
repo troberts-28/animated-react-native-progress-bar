@@ -1,5 +1,5 @@
 {
-    "name": "simple-react-native-progess-bar-example",
+    "name": "animated-react-native-progess-bar-example",
     "version": "1.0.0",
     "main": "node_modules/expo/AppEntry.js",
     "scripts": {
