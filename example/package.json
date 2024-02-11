@@ -9,7 +9,8 @@
         "web": "expo start --web"
     },
     "dependencies": {
-        "expo": "~49.0.15",
+        "@expo/vector-icons": "^13.0.0",
+        "expo": "49",
         "expo-font": "~11.4.0",
         "expo-splash-screen": "~0.20.5",
         "lottie-react-native": "5.1.6",

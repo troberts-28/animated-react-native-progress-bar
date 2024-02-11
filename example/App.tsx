@@ -6,6 +6,7 @@ import React, {
     useState,
 } from "react";
 
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import AnimatedLottieView from "lottie-react-native";
@@ -16,7 +17,10 @@ import {
     ScrollView,
     useWindowDimensions,
     FlatList,
+    Pressable,
+    LayoutAnimation,
 } from "react-native";
+import type { NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 
 import { Checkbox } from "./components/Checkbox";
 import { ProgressBar } from "../src";
@@ -33,6 +37,21 @@ SplashScreen.preventAutoHideAsync();
 
 const AppContent = () => {
     const { width: screenWidth } = useWindowDimensions();
+
+    const scrollViewRef = useRef<ScrollView>(null);
+
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
+
+    const onMomentumScrollEnd = useCallback(
+        (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+            const { contentOffset } = event.nativeEvent;
+            const newPageIndex = Math.round(contentOffset.x / screenWidth) as
+                | 0
+                | 1;
+            setCurrentPageIndex(newPageIndex);
+        },
+        [screenWidth]
+    );
 
     const [example1CheckboxValues, setExample1CheckboxValues] = useState([0]);
 
@@ -111,9 +130,10 @@ const AppContent = () => {
         setInterval(() => {
             setExample2Progress((example2Progress) => {
                 const newProgress = example2Progress + 20;
-                if (newProgress <= 100) {
+                if (newProgress <= 120) {
                     return newProgress;
                 }
+
                 resetKey.current = Math.random();
                 return 0;
             });
@@ -132,6 +152,21 @@ const AppContent = () => {
         );
     }, []);
 
+    const successLottieRef = useRef<AnimatedLottieView>(null);
+
+    const renderExample2Success = useMemo(() => {
+        return (
+            <AnimatedLottieView
+                ref={successLottieRef}
+                autoPlay
+                resizeMode="contain"
+                source={require("./assets/success.json")}
+                speed={0.8}
+                style={{ position: "absolute", marginTop: 20, height: 100 }}
+            />
+        );
+    }, []);
+
     const renderExample2 = useMemo(() => {
         return (
             <View
@@ -144,6 +179,7 @@ const AppContent = () => {
                     style={{
                         width: "100%",
                         alignItems: "center",
+                        paddingHorizontal: 64,
                     }}>
                     <ProgressBar
                         key={resetKey.current}
@@ -167,17 +203,98 @@ const AppContent = () => {
                         ]}
                         value={example2Progress}
                     />
-                    {renderExample2Spinner}
+                    {example2Progress <= 80
+                        ? renderExample2Spinner
+                        : renderExample2Success}
                 </View>
             </View>
         );
-    }, [example2Progress, renderExample2Spinner, screenWidth]);
+    }, [
+        example2Progress,
+        renderExample2Spinner,
+        renderExample2Success,
+        screenWidth,
+    ]);
+
+    const renderNavigationArrows = useMemo(() => {
+        return (
+            <>
+                {currentPageIndex !== 1 ? (
+                    <Pressable
+                        onPress={() => {
+                            LayoutAnimation.configureNext(
+                                LayoutAnimation.Presets.easeInEaseOut
+                            );
+                            setCurrentPageIndex((currentPageIndex) => {
+                                scrollViewRef.current?.scrollTo({
+                                    x: screenWidth * (currentPageIndex + 1),
+                                    animated: true,
+                                });
+                                return currentPageIndex + 1;
+                            });
+                        }}
+                        style={({ pressed }) => [
+                            styles.chevronPressable,
+                            { right: 8 },
+                            pressed && styles.chevronPressable._pressed,
+                        ]}>
+                        <Ionicons
+                            color={
+                                currentPageIndex % 2 !== 0
+                                    ? "#514242"
+                                    : "#F1F1F1"
+                            }
+                            name="chevron-forward"
+                            size={32}
+                        />
+                    </Pressable>
+                ) : null}
+                {currentPageIndex !== 0 ? (
+                    <Pressable
+                        onPress={() => {
+                            LayoutAnimation.configureNext(
+                                LayoutAnimation.Presets.easeInEaseOut
+                            );
+                            setCurrentPageIndex((currentPageIndex) => {
+                                scrollViewRef.current?.scrollTo({
+                                    x: screenWidth * (currentPageIndex - 1),
+                                    animated: true,
+                                });
+                                return currentPageIndex - 1;
+                            });
+                        }}
+                        style={({ pressed }) => [
+                            styles.chevronPressable,
+                            { left: 8 },
+                            pressed && styles.chevronPressable._pressed,
+                        ]}>
+                        <Ionicons
+                            color={
+                                currentPageIndex % 2 !== 0
+                                    ? "#514242"
+                                    : "#F1F1F1"
+                            }
+                            name="chevron-back"
+                            size={32}
+                        />
+                    </Pressable>
+                ) : null}
+            </>
+        );
+    }, [currentPageIndex, screenWidth]);
 
     return (
-        <ScrollView horizontal pagingEnabled>
-            {renderExample1}
-            {renderExample2}
-        </ScrollView>
+        <>
+            <ScrollView
+                ref={scrollViewRef}
+                horizontal
+                onMomentumScrollEnd={onMomentumScrollEnd}
+                pagingEnabled>
+                {renderExample1}
+                {renderExample2}
+            </ScrollView>
+            {renderNavigationArrows}
+        </>
     );
 };
 
@@ -233,6 +350,17 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: "#E9E9E9",
         fontFamily: "SF-Pro",
+    },
+    chevronPressable: {
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        padding: 8,
+        _pressed: {
+            opacity: 0.7,
+        },
     },
 });
 

@@ -5,8 +5,6 @@ const { getDefaultConfig } = require("expo/metro-config");
 
 const config = getDefaultConfig(__dirname);
 
-config.resolver.assetExts.push("ttf");
-
 const extraNodeModules = {
     "simple-react-native-progress-bar": path.resolve(__dirname, "../src"),
 };

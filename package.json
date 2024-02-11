@@ -10,10 +10,11 @@
     "main": "dist/commonjs/index.js",
     "types": "dist/typescript/src/index.d.ts",
     "scripts": {
-        "test": "jest --forceExit --silent",
+        "setup": "yarn && cd example && yarn",
+        "start": "cd example && yarn start",
+        "android": "cd example && yarn android",
         "build": "bob build",
         "clean": "rm yarn.lock && rm -rf ./node_modules && yarn install",
-        "start": "cd example && yarn start",
         "lint": "eslint --ext .ts,.tsx .",
         "lint:fix": "eslint --ext .ts,.tsx . --fix",
         "prepare": "yarn build"
@@ -83,23 +84,6 @@
     ],
     "engines": {
         "node": ">=16.0.0"
-    },
-    "jest": {
-        "preset": "react-native",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js",
-            "jsx",
-            "json",
-            "node"
-        ],
-        "testEnvironment": "node",
-        "modulePathIgnorePatterns": [
-            "<rootDir>/dist/",
-            "<rootDir>/example/"
-        ],
-        "transformIgnorePatterns": []
     },
     "peerDependencies": {
         "react": ">=16.8.0",
