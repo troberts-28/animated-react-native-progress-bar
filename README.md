@@ -17,18 +17,7 @@ Zero dependencies.
 -   [Peer Dependencies 👶](#peer-dependencies-)
 -   [Installation 🚀](#installation-)
 -   [Examples 😎](#examples-)
-    -   [Timer Picker Modal (Dark Mode) 🌚](#timer-picker-modal-dark-mode-)
-    -   [Timer Picker Modal (Light Mode) 🌞](#timer-picker-modal-light-mode-)
-    -   [Timer Picker with Customisation (Dark Mode) 🌒](#timer-picker-with-customisation-dark-mode-)
-    -   [Timer Picker with Customisation (Light Mode) 🌔](#timer-picker-with-customisation-light-mode-)
 -   [Props 💅](#props-)
-    -   [TimerPicker ⏲️](#timerpicker-️)
-        -   [Custom Styles 👗](#custom-styles-)
-    -   [TimerPickerModal ⏰](#timerpickermodal-)
-        -   [Custom Styles 👕](#custom-styles--1)
--   [Methods 🔄](#methods-)
-    -   [TimerPicker](#timerpicker)
-    -   [TimerPickerModal](#timerpickermodal)
 -   [License 📝](#license-)
 
 <br>
@@ -61,13 +50,13 @@ Supports React Native >= 0.59.0 and React >= 16.8.0.
 Just run:
 
 ```bash
-npm install simple-react-native-progress-bar
+npm install animated-react-native-progress-bar
 ```
 
 or
 
 ```bash
-yarn add simple-react-native-progress-bar
+yarn add animated-react-native-progress-bar
 ```
 
 <br>
@@ -77,72 +66,6 @@ yarn add simple-react-native-progress-bar
 ### To-Do List ✅
 
 ```jsx
-import { TimerPickerModal } from "simple-react-native-progress-bar";
-import { LinearGradient } from "expo-linear-gradient"; // or `import LinearGradient from "react-native-linear-gradient"`
-
-....
-const [showPicker, setShowPicker] = useState(false);
-const [alarmString, setAlarmString] = useState<
-        string | null
-    >(null);
-
-return (
-    <View style={{backgroundColor: "#514242", alignItems: "center", justifyContent: "center"}}>
-        <Text style={{fontSize: 18, color: "#F1F1F1"}}>
-            {alarmStringExample !== null
-                ? "Alarm set for"
-                : "No alarm set"}
-        </Text>
-        <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => setShowPicker(true)}>
-            <View style={{alignItems: "center"}}>
-                {alarmString !== null ? (
-                    <Text style={{color: "#F1F1F1", fontSize: 48}}>
-                        {alarmString}
-                    </Text>
-                ) : null}
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => setShowPicker(true)}>
-                    <View style={{marginTop: 30}}>
-                        <Text
-                            style={{
-                                paddingVertical: 10,
-                                paddingHorizontal: 18,
-                                borderWidth: 1,
-                                borderRadius: 10,
-                                fontSize: 16,
-                                overflow: "hidden",
-                                borderColor: "#C2C2C2",
-                                color: "#C2C2C2"
-                                }}>
-                            Set Alarm 🔔
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        </TouchableOpacity>
-        <TimerPickerModal
-            visible={showPicker}
-            setIsVisible={setShowPicker}
-            onConfirm={(pickedDuration) => {
-                setAlarmString(formatTime(pickedDuration));
-                setShowPicker(false);
-            }}
-            modalTitle="Set Alarm"
-            onCancel={() => setShowPicker(false)}
-            closeOnOverlayPress
-            LinearGradient={LinearGradient}
-            styles={{
-                theme: "dark",
-            }}
-            modalProps={{
-                overlayOpacity: 0.2,
-            }}
-        />
-    </View>
-)
 
 ```
 
@@ -151,69 +74,6 @@ return (
 ### Loading Bar ⏳
 
 ```jsx
-import { TimerPickerModal } from "simple-react-native-progress-bar";
-import { LinearGradient } from "expo-linear-gradient"; // or `import LinearGradient from "react-native-linear-gradient"`
-
-....
-const [showPicker, setShowPicker] = useState(false);
-const [alarmString, setAlarmString] = useState<
-        string | null
-    >(null);
-
-return (
-    <View style={{backgroundColor: "#F1F1F1", alignItems: "center", justifyContent: "center"}}>
-        <Text style={{fontSize: 18, color: "#202020"}}>
-            {alarmStringExample !== null
-                ? "Alarm set for"
-                : "No alarm set"}
-        </Text>
-        <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => setShowPicker(true)}>
-            <View style={{alignItems: "center"}}>
-                {alarmString !== null ? (
-                    <Text style={{color: "#202020", fontSize: 48}}>
-                        {alarmString}
-                    </Text>
-                ) : null}
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => setShowPicker(true)}>
-                    <View style={{marginTop: 30}}>
-                        <Text
-                            style={{paddingVertical: 10,
-                            paddingHorizontal: 18,
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            fontSize: 16,
-                            overflow: "hidden",
-                            borderColor: "#8C8C8C",
-                            color: "#8C8C8C"
-                            }}>
-                            Set Alarm 🔔
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        </TouchableOpacity>
-        <TimerPickerModal
-            visible={showPicker}
-            setIsVisible={setShowPicker}
-            onConfirm={(pickedDuration) => {
-                setAlarmString(formatTime(pickedDuration));
-                setShowPicker(false);
-            }}
-            modalTitle="Set Alarm"
-            onCancel={() => setShowPicker(false)}
-            closeOnOverlayPress
-            use12HourPicker
-            LinearGradient={LinearGradient}
-            styles={{
-                theme: "light",
-            }}
-        />
-    </View>
-)
 
 ```
 
@@ -223,7 +83,7 @@ return (
 
 ## Props 💅
 
-|               Prop               | Description                                           |                                                                                              Type                                                                                               | Default | Required |
+<!-- |               Prop               | Description                                           |                                                                                              Type                                                                                               | Default | Required |
 | :------------------------------: | :---------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----: | :------: |
 |         onDurationChange         | Callback when the duration changes                    |                                                            `(duration: { hours: number, minutes: number, seconds: number }) => void`                                                            |    -    |  false   |
 |           initialHours           | Initial value for hours                               |                                                                                             Number                                                                                              |    -    |  false   |
@@ -250,11 +110,11 @@ return (
 |    pickerGradientOverlayProps    | Props for both gradient overlays                      |                                                                                 `Partial<LinearGradientProps>`                                                                                  |    -    |  false   |
 |  topPickerGradientOverlayProps   | Props for the top gradient overlay                    |                                                                                 `Partial<LinearGradientProps>`                                                                                  |    -    |  false   |
 | bottomPickerGradientOverlayProps | Props for the bottom gradient overlay                 |                                                                                 `Partial<LinearGradientProps>`                                                                                  |    -    |  false   |
-|              styles              | Custom styles for the timer picker                    |                                                                           [CustomTimerPickerStyles](#custom-styles-)                                                                            |    -    |  false   |
+|              styles              | Custom styles for the timer picker                    |                                                                           [CustomTimerPickerStyles](#custom-styles-)                                                                            |    -    |  false   | -->
 
 #### Custom Styles 👗
 
-The following custom styles can be supplied to re-style the component in any way. Various styles are applied by default - you can take a look at these [here](src/components/TimerPicker/TimerPicker.styles.ts).
+<!-- The following custom styles can be supplied to re-style the component in any way. Various styles are applied by default - you can take a look at these [here](src/components/TimerPicker/TimerPicker.styles.ts).
 
 |      Style Prop       | Description                                  |       Type        |
 | :-------------------: | :------------------------------------------- | :---------------: |
@@ -269,7 +129,7 @@ The following custom styles can be supplied to re-style the component in any way
 |  pickerItemContainer  | Container for each number in the picker      |     ViewStyle     |
 |      pickerItem       | Style for each individual picker number      |     TextStyle     |
 |  disabledPickerItem   | Style for any numbers outside any set limits |     TextStyle     |
-| pickerGradientOverlay | Style for the gradient overlay (fade out)    |     ViewStyle     |
+| pickerGradientOverlay | Style for the gradient overlay (fade out)    |     ViewStyle     | -->
 
 <br>
 

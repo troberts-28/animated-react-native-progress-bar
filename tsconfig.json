@@ -18,6 +18,7 @@
     "exclude": [
         "example/*",
         "example-bare/*",
+        "benchmarking/*",
         "dist/*",
         "src/tests",
         "babel.config.js",
