@@ -7,7 +7,6 @@ import React, {
 } from "react";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import AnimatedLottieView from "lottie-react-native";
 import {
@@ -113,6 +112,7 @@ const AppContent = () => {
                     onChange={(values) => setExample1CheckboxValues(values)}
                     value={example1CheckboxValues}>
                     <FlatList
+                        alwaysBounceVertical={false}
                         data={TO_DO_LIST}
                         renderItem={renderItem}
                         style={{ flex: 1, width: "100%" }}
@@ -299,19 +299,10 @@ const AppContent = () => {
 };
 
 export const App = () => {
-    const [fontsLoaded] = useFonts({
-        "SF-Pro": require("./assets/fonts/SF-Pro-Rounded-Regular.otf"),
-    });
-
     const onLayoutRootView = useCallback(async () => {
-        if (fontsLoaded) {
-            await SplashScreen.hideAsync();
-        }
-    }, [fontsLoaded]);
+        await SplashScreen.hideAsync();
+    }, []);
 
-    if (!fontsLoaded) {
-        return null;
-    }
 
     return (
         <View onLayout={onLayoutRootView} style={styles.outerContainer}>
@@ -361,7 +352,7 @@ const styles = StyleSheet.create({
     },
     chevronPressable_pressed: {
         opacity: 0.7,
-    }
+    },
 });
 
 export default App;
