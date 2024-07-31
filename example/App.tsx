@@ -85,6 +85,19 @@ const AppContent = () => {
                         width: "100%",
                     }}>
                     <ProgressBar
+                        inactiveTrackChild={
+                            <Text
+                                style={{
+                                    color: "#8a8888",
+                                    fontFamily: "SF-Pro",
+                                }}>
+                                {`${
+                                    (example1CheckboxValues.length /
+                                        TO_DO_LIST.length) *
+                                    100
+                                }% complete`}
+                            </Text>
+                        }
                         styles={{
                             track: {
                                 height: 30,
@@ -97,16 +110,7 @@ const AppContent = () => {
                             (example1CheckboxValues.length /
                                 TO_DO_LIST.length) *
                             100
-                        }>
-                        <Text
-                            style={{ color: "#8a8888", fontFamily: "SF-Pro" }}>
-                            {`${
-                                (example1CheckboxValues.length /
-                                    TO_DO_LIST.length) *
-                                100
-                            }% complete`}
-                        </Text>
-                    </ProgressBar>
+                        }></ProgressBar>
                 </View>
                 <Checkbox.Group
                     onChange={(values) => setExample1CheckboxValues(values)}
@@ -183,7 +187,7 @@ const AppContent = () => {
                     }}>
                     <ProgressBar
                         key={resetKey.current}
-                        trackColor={[
+                        activeTrackColor={[
                             {
                                 value: 0,
                                 color: "#CA4046",
@@ -302,7 +306,6 @@ export const App = () => {
     const onLayoutRootView = useCallback(async () => {
         await SplashScreen.hideAsync();
     }, []);
-
 
     return (
         <View onLayout={onLayoutRootView} style={styles.outerContainer}>
