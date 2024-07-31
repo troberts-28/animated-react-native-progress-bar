@@ -1,7 +1,16 @@
-export const getValueWidth = (value: number, min: number, max: number) => {
-    return value < max && value > min
-        ? ((value - min) / (max - min)) * 100
-        : value > min
-        ? 100
-        : 0.1;
+export const getPercentageWidth = (
+    value: number,
+    minValue: number,
+    maxValue: number,
+    trackOffsetPercentage: number
+) => {
+    if (value < maxValue && value > minValue) {
+        return ((value - minValue) / (maxValue - minValue)) * 100 + trackOffsetPercentage;
+    }
+
+    if (value > minValue) {
+        return 100 + trackOffsetPercentage;
+    }
+
+    return trackOffsetPercentage;
 };

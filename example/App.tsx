@@ -7,7 +7,6 @@ import React, {
 } from "react";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import AnimatedLottieView from "lottie-react-native";
 import {
@@ -86,6 +85,19 @@ const AppContent = () => {
                         width: "100%",
                     }}>
                     <ProgressBar
+                        inactiveTrackChild={
+                            <Text
+                                style={{
+                                    color: "#8a8888",
+                                    fontFamily: "SF-Pro",
+                                }}>
+                                {`${
+                                    (example1CheckboxValues.length /
+                                        TO_DO_LIST.length) *
+                                    100
+                                }% complete`}
+                            </Text>
+                        }
                         styles={{
                             track: {
                                 height: 30,
@@ -98,21 +110,13 @@ const AppContent = () => {
                             (example1CheckboxValues.length /
                                 TO_DO_LIST.length) *
                             100
-                        }>
-                        <Text
-                            style={{ color: "#8a8888", fontFamily: "SF-Pro" }}>
-                            {`${
-                                (example1CheckboxValues.length /
-                                    TO_DO_LIST.length) *
-                                100
-                            }% complete`}
-                        </Text>
-                    </ProgressBar>
+                        }></ProgressBar>
                 </View>
                 <Checkbox.Group
                     onChange={(values) => setExample1CheckboxValues(values)}
                     value={example1CheckboxValues}>
                     <FlatList
+                        alwaysBounceVertical={false}
                         data={TO_DO_LIST}
                         renderItem={renderItem}
                         style={{ flex: 1, width: "100%" }}
@@ -183,7 +187,7 @@ const AppContent = () => {
                     }}>
                     <ProgressBar
                         key={resetKey.current}
-                        trackColor={[
+                        activeTrackColor={[
                             {
                                 value: 0,
                                 color: "#CA4046",
@@ -236,7 +240,7 @@ const AppContent = () => {
                         style={({ pressed }) => [
                             styles.chevronPressable,
                             { right: 8 },
-                            pressed && styles.chevronPressable._pressed,
+                            pressed && styles.chevronPressable_pressed,
                         ]}>
                         <Ionicons
                             color={
@@ -266,7 +270,7 @@ const AppContent = () => {
                         style={({ pressed }) => [
                             styles.chevronPressable,
                             { left: 8 },
-                            pressed && styles.chevronPressable._pressed,
+                            pressed && styles.chevronPressable_pressed,
                         ]}>
                         <Ionicons
                             color={
@@ -299,19 +303,9 @@ const AppContent = () => {
 };
 
 export const App = () => {
-    const [fontsLoaded] = useFonts({
-        "SF-Pro": require("./assets/fonts/SF-Pro-Rounded-Regular.otf"),
-    });
-
     const onLayoutRootView = useCallback(async () => {
-        if (fontsLoaded) {
-            await SplashScreen.hideAsync();
-        }
-    }, [fontsLoaded]);
-
-    if (!fontsLoaded) {
-        return null;
-    }
+        await SplashScreen.hideAsync();
+    }, []);
 
     return (
         <View onLayout={onLayoutRootView} style={styles.outerContainer}>
@@ -358,9 +352,9 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         padding: 8,
-        _pressed: {
-            opacity: 0.7,
-        },
+    },
+    chevronPressable_pressed: {
+        opacity: 0.7,
     },
 });
 

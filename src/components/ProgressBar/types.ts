@@ -10,12 +10,15 @@ export type TrackColorType = {
 };
 
 export interface ProgressProps {
+    activeTrackChild?: ReactElement | ReactElement[] | null;
+    activeTrackColor?: string | TrackColorType[];
     animate?: boolean;
     children?: ReactElement | ReactElement[] | null;
+    inactiveTrackChild?: ReactElement | ReactElement[] | null;
     layoutAnimationConfig?: LayoutAnimationConfig;
-    max?: number;
-    min?: number;
+    maxValue?: number;
+    minValue?: number;
     styles?: CustomProgressBarStyles;
-    trackColor?: string | TrackColorType[];
+    trackOffsetPercentage?: number;
     value?: number;
 }

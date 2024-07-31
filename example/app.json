@@ -25,10 +25,15 @@
             "favicon": "./assets/favicon.png"
         },
         "plugins": [
+            "expo-asset",
             [
                 "expo-font",
                 {
-                    "fonts": ["./assets/fonts/SF-Pro-Rounded-Regular.otf"]
+                    "fonts": [
+                        {
+                            "SF-Pro": "./assets/fonts/SF-Pro-Rounded-Regular.otf"
+                        }
+                    ]
                 }
             ]
         ]
