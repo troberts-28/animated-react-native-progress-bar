@@ -236,7 +236,7 @@ const AppContent = () => {
                         style={({ pressed }) => [
                             styles.chevronPressable,
                             { right: 8 },
-                            pressed && styles.chevronPressable._pressed,
+                            pressed && styles.chevronPressable_pressed,
                         ]}>
                         <Ionicons
                             color={
@@ -266,7 +266,7 @@ const AppContent = () => {
                         style={({ pressed }) => [
                             styles.chevronPressable,
                             { left: 8 },
-                            pressed && styles.chevronPressable._pressed,
+                            pressed && styles.chevronPressable_pressed,
                         ]}>
                         <Ionicons
                             color={
@@ -358,10 +358,10 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         padding: 8,
-        _pressed: {
-            opacity: 0.7,
-        },
     },
+    chevronPressable_pressed: {
+        opacity: 0.7,
+    }
 });
 
 export default App;
